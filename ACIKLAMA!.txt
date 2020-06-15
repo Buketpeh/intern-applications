@@ -1,0 +1,4 @@
+windowsformapps2 : Tüm veriler veri tabanýnda tutulmaktadýr.Karþýlaþtýrma yapýlarak uzun açýklamalar listboxlara eklenmektedir.
+windowsformapps4:Tablo isimleri ve kolon isimlerini ayrý txt dosyalarýndan okunup açýklamalarýyla birlikte baþka bir txt dosyasýna yazýlmaktadýr.
+dosyaveriçekme: Kodlanmýþ bir þeklinde yazýlmýþ olan isimler tablo ve kolon türüne göre ayrýþtýrýlýr sonrasýnda listboxa yazýlýr.
+stored procedure: Kolon adlarýnýn açýklamalarý yazdýrýlmak istendi fakat hata sebebiyle procedure çalýþmýyor.

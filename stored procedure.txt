@@ -1,0 +1,89 @@
+
+create database kayýtlar
+use kayýtlar
+
+
+create table kayit(
+id int not null primary key,
+kýsaltma varchar(50),
+aciklama varchar(50),
+tur varchar(50),
+)
+
+create table Kolonisimleri(
+ kolonisimid int  not null primary key,
+ kolonadi varchar(50),
+ id int foreign key references kayit(id),
+)
+
+
+
+create table tabloisimleri(
+tabloisimid int not null primary key,
+tabloadi varchar(50),
+id int foreign key references kayit(id),
+)
+
+
+
+use kayýtlar
+
+alter procedure uzunaciklamadeneme
+(
+@a varchar(50) output
+)
+
+as
+alter table kolonisimleri add uzunaciklamalar varchar(50)
+create table #temp1(splitkýsaltma varchar(50)) --gecici tablo tanýmladým
+declare @kolonadi varchar(50)
+declare @split varchar(50)
+declare @uzunaciklama varchar(100) 
+declare @kýsaltmaa varchar(50)
+
+declare kolon_cursor cursor for  --hersatýrýn isminde split yapabilmek için kolon için cursor
+  select kolonadi from Kolonisimleri
+  open kolon_cursor
+  fetch next from kolon_cursor
+  into @kolonadi
+  while @@FETCH_STATUS=0
+  BEGIN 
+
+
+            select *
+            INTO #TEMP1 
+            from (select value 
+            from Kolonisimleri x cross apply string_split(@kolonadi,'_')) dd  -- her split ettiðim kolonadý satýrýný geçici bir tabloya atýyorum
+			open gecici_cursor -- bu geçici tablo içinde bir cursor yaprtým ki bunda karþýlaþtýrma yapabileyim
+            fetch next from gecici_cursor into @split
+                   while @@FETCH_STATUS=0 
+                      BEGIN 
+					          declare kýsaltma_cursor cursor for 
+							  select kýsaltma from kayit
+							  open  kýsaltma_cursor
+							    fetch next from kýsaltma_cursor --kýsaltmalarla geçici tabloda split edilenleri karþýlaþtýrabilmek için kýsaltmalar için bir cursor oluþturdum
+								into @kýsaltmaa
+								      while @@FETCH_STATUS=0
+								      begin
+
+									  -- kýsaltma eþitse  #temp1 deki sütuna onu bir deðere ata 
+									  set @a += (select top 1 aciklama from kayit where kýsaltma= #splitkýsaltma) --? geçici tablonun bu kolonu ile nasýl karþýlaþtýrm 
+									  
+								      end
+									  insert into kolonisimleri(uzunaciklamalar) values(@a) 
+							  close kýsaltma_cursor
+							  deallocate kýsaltma_cursor
+
+
+							  
+
+					
+                               
+						end
+						close gecici_cursor
+						deallocate gecici_cursor
+END
+  close kolon_cursor
+  deallocate kolon_cursor
+  
+  

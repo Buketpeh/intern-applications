@@ -1,0 +1,275 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using System.IO;
+using System.Data.SqlClient;
+using System.Reflection;
+
+namespace WindowsFormsApp4
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+
+        string DosyaYolu = "";
+        string DosyaYolu1 = "";
+        string DosyaYolu2 = "";
+
+        string DosyaAdi = "";
+        string DosyaAdi1 = "";
+        string DosyaAdi2 = "";
+
+        String test = "";
+        String test1 = "";
+        String test2 = "";
+
+        public void Button1_Click(object sender, EventArgs e)
+        {
+
+
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Text Dosyasý|*.txt";
+            file.RestoreDirectory = true; //her açýldýðýnda bir önceki klasörü açar
+            file.CheckFileExists = false; // yazdýðýmýzda dosya var mý yok mu kontrolü yapar
+            file.Title = "Bir metin belgesi seçiniz...";
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                DosyaYolu = file.FileName; //seçilen dosyanýn tüm yolunu verir
+                DosyaAdi = file.SafeFileName;//seçilen dosyanýn adýný verir
+                test = "basýldý";
+            }
+
+
+            file.ShowDialog();
+            file.Reset();
+            label2.Text = DosyaAdi;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Text Dosyasý|*.txt";
+            file.RestoreDirectory = true; //her açýldýðýnda bir önceki klasörü açar
+            file.CheckFileExists = false; // yazdýðýmýzda dosya var mý yok mu kontrolü yapar
+            file.Title = "Bir metin belgesi seçiniz...";
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                DosyaYolu1 = file.FileName; //seçilen dosyanýn tüm yolunu verir
+                DosyaAdi1 = file.SafeFileName; //seçilen dosyanýn adýný verir
+                test1 = "basýldý"; //dosya seçildi kontrolü
+            }
+
+
+            file.ShowDialog();
+            file.Reset();
+            label4.Text = DosyaAdi1;
+        }
+        private void Button4_Click(object sender, EventArgs e) //yazýlacak dosyanýn seçildiði buton
+        {
+
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Text Dosyasý|*.txt";
+            file.RestoreDirectory = true; //her açýldýðýnda bir önceki klasörü açar
+            file.CheckFileExists = false; // yazdýðýmýzda dosya var mý yok mu kontrolü yapar
+            file.Title = "Bir metin belgesi seçiniz...";
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                DosyaYolu2 = file.FileName; //seçilen dosyanýn tüm yolunu verir
+                DosyaAdi2 = file.SafeFileName;//seçilen dosyanýn adýný verir.
+                test2 = "basýldý";
+
+            }
+
+
+            file.ShowDialog();
+            file.Reset();
+            label6.Text = DosyaAdi2;
+        }
+
+
+
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+
+            if (test == "basýldý" && test1 == "basýldý" && test2 != "basýldý")
+                MessageBox.Show("Lütfen, yazdýrmak istediðiniz dosyayý  seçiniz.");
+            if (test == "basýldý" && test1 != "basýldý" && test2 == "basýldý")
+                MessageBox.Show("Lütfen,tablo-kolon kýsaltma dosyasýný seçiniz.");
+            if (test == "basýldý" && test1 != "basýldý" && test2 != "basýldý")
+                MessageBox.Show("Lütfen,tablo-kolon kýsaltma dosyasý ve yazdýrýlmak istenilen dosyayý seçiniz.");
+            if (test != "basýldý" && test1 == "basýldý" && test2 == "basýldý")
+                MessageBox.Show("Lütfen, tablo-kolon isim dosyasýný seçiniz.");
+            if (test != "basýldý" && test1 == "basýldý" && test2 != "basýldý")
+                MessageBox.Show("Lütfen, tablo-kolon isim dosyasýný ve yazdýrýlmak istenilen dosyayý seçiniz.");
+            if (test != "basýldý" && test1 != "basýldý" && test2 == "basýldý")
+                MessageBox.Show("Lütfen, tablo-kolon isim dosyasýný ve tablo-kolon kýsaltma dosyasýný seçiniz.");
+            if (test != "basýldý" && test1 != "basýldý" && test2 != "basýldý")
+                MessageBox.Show("Hiç bir dosya seçimi yapmadýnýz.Lütfen, dosya seçimi yapýnýz.");
+
+            if (test == "basýldý" && test1 == "basýldý" && test2 == "basýldý")
+            {
+
+
+
+                TextReader tReader = new StreamReader(DosyaYolu); //isimler olan .txtden okuma
+
+
+                string[] okunan = new string[] { "\r\n" };
+                string text = tReader.ReadToEnd();
+                string[] satirlar = text.Split(okunan, StringSplitOptions.None);
+
+                List<string> diziler = new List<string>();
+
+                DataTable tbl1 = new DataTable();
+
+                tbl1.Columns.Add("isim");
+                tbl1.Columns.Add("Tip");
+                tbl1.Columns.Add("Dil");
+
+
+                foreach (var item in satirlar)
+                {
+                    if (item != "") //satýr sonunda oluþan boþluklarýn kontrole dahil olmasýný önlemek amaçlý
+                    {
+                        string[] ayýrým = item.Split('|');
+
+
+                        DataRow row = tbl1.NewRow();
+                        row["isim"] = ayýrým[0].ToString();
+                        row["Tip"] = ayýrým[1].ToString();
+                        row["Dil"] = ayýrým[2].ToString();
+                        tbl1.Rows.Add(row);
+                    }
+
+
+                    else
+                    {
+                        continue;
+                    }
+
+
+                }
+
+
+                TextReader t1Reader = new StreamReader(DosyaYolu1); //kýsaltmalar içinolan .txtden okuma
+
+                string[] okunan1 = new string[] { "\r\n" };
+                string text1 = t1Reader.ReadToEnd();
+                string[] satirlar1 = text1.Split(okunan1, StringSplitOptions.None);
+
+                List<string> diziler1 = new List<string>();
+
+                DataTable tbl2 = new DataTable();
+
+                tbl2.Columns.Add("kýsaltma");
+                tbl2.Columns.Add("acýklama");
+                tbl2.Columns.Add("tip");
+                tbl2.Columns.Add("dil");
+
+
+                foreach (var item1 in satirlar1)
+                {
+                    if (item1 != "") //satýr sonunda oluþan boþluklarýn kontrole dahil olmasýný önlemek amaçlý
+                    {
+                        string[] ayrýrým1 = item1.Split('|');
+
+                        DataRow row = tbl2.NewRow();
+                        row["kýsaltma"] = ayrýrým1[0].ToString();
+                        row["acýklama"] = ayrýrým1[1].ToString();
+                        row["tip"] = ayrýrým1[2].ToString();
+                        row["dil"] = ayrýrým1[3].ToString();
+                        tbl2.Rows.Add(row);
+                    }
+
+                    else
+                    {
+                        continue;
+                    }
+
+                }
+
+
+                string dosya_yolu = DosyaYolu2;
+
+                //karþýlaþtýrma yapýldýktan sonra uzun açýklamalarýn yazýlacaðý .txt
+                FileStream fs = new FileStream(dosya_yolu, FileMode.Open, FileAccess.Write);
+
+                //bir file stream nesnesi oluþturuyoruz. 1. parametre dosya yolunu,
+                //2. parametre dosya açma
+                //3.parametre dosya eriþiminin veri yazmak için olacaðýný gösterir.
+
+                StreamWriter sw = new StreamWriter(fs);
+
+                //karþýlaþtýrma iþlemleri ve uzun açýklamanýn oluþturulmasý burada gerçekleþtiriliyor.
+                string[] a = new string[tbl1.Rows.Count];
+
+                for (int i = 0; i < tbl1.Rows.Count; i++)
+                {
+
+                    string[] ayýrým3 = tbl1.Rows[i]["isim"].ToString().Split('_');
+
+
+                    foreach (var item in ayýrým3)
+                    {
+
+
+                        for (int j = 0; j < tbl2.Rows.Count; j++)
+                        {
+
+                            if (item.ToString() == tbl2.Rows[j]["kýsaltma"].ToString())
+                            {
+
+                                if (tbl1.Rows[i]["tip"].ToString() == tbl2.Rows[j]["tip"].ToString())
+                                {
+
+                                    if (tbl1.Rows[i]["dil"].ToString() == tbl2.Rows[j]["dil"].ToString())
+                                    {
+
+                                        a[i] += tbl2.Rows[j]["acýklama"].ToString() + ' ';
+
+
+
+                                    }
+                                }
+                            }
+
+                        }
+
+                        //tablo-kolon isim .txt'sindeki tüm sütunlar ve uzun açýklamalarý burada baþka bir .txt'ye yazýlyor.
+                        for (int k = 0; k < tbl1.Rows.Count; k++)
+                        {
+
+                            sw.WriteLine(tbl1.Rows[k]["isim"].ToString() + '|' + a[k].ToString() + '|' + tbl1.Rows[k]["tip"].ToString() + '|' + tbl1.Rows[k]["dil"].ToString());
+                        }
+
+
+                        sw.Flush();
+                        sw.Close();
+                        fs.Close();
+
+                        MessageBox.Show("Ýþleminiz gerçekleþti.");
+
+                        Form.ActiveForm.Close();
+                    }
+                }
+
+
+            }
+        }
+    }
+}

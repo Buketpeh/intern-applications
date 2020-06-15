@@ -1,0 +1,30 @@
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.exe.config
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.exe
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.pdb
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csprojAssemblyReference.cache
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.Form1.resources
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.Properties.Resources.resources
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csproj.GenerateResource.cache
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csproj.CoreCompileInputs.cache
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.exe
+C:\Users\buket\source\repos\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.pdb
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.exe.config
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.exe
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.pdb
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csprojAssemblyReference.cache
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.Form1.resources
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.Properties.Resources.resources
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csproj.GenerateResource.cache
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csproj.CoreCompileInputs.cache
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.exe
+C:\Users\buket\Desktop\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.pdb
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.exe.config
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.exe
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\bin\Debug\Dosyavericekme.pdb
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csprojAssemblyReference.cache
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.Form1.resources
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.Properties.Resources.resources
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csproj.GenerateResource.cache
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.csproj.CoreCompileInputs.cache
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.exe
+C:\Users\buket\Desktop\New folder (4)\New folder (2)\staj uygulamaları\Dosyavericekme\Dosyavericekme\obj\Debug\Dosyavericekme.pdb
